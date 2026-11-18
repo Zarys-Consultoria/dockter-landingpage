@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dockter.com.br/sitemap.xml

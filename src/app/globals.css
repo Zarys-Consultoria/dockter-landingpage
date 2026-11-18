@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #3155d9;
+  --color-brand-deep: #2a49bd;
+  --color-ink: #182745;
+  --color-ice: #dde7fa;
+  --color-muted: #5d677a;
+  --color-cloud: #f5f7fb;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-jakarta), var(--font-dm-sans), ui-sans-serif, system-ui,
+    sans-serif;
+}
+
+:root {
+  --shadow-soft: 0 22px 50px -28px rgba(24, 39, 69, 0.3);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  background: var(--color-cloud);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+.d-cut {
+  border-radius: 28px 50% 50% 28px / 28px 50% 50% 28px;
+}
+
+summary {
+  list-style: none;
+  cursor: pointer;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+.faq-ic {
+  transition: transform 0.2s;
+}
+details[open] .faq-ic {
+  transform: rotate(45deg);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.reveal {
+  opacity: 0;
+}
+.reveal.in-view {
+  animation: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.page-enter {
+  animation: page-enter 0.45s ease-out;
+}
+
+.hover-lift {
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-soft);
+}
+
+.nav-underline {
+  transform-origin: left;
+  background: var(--color-brand);
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@keyframes menu-open {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-menu-open {
+  animation: menu-open 0.22s ease-out;
+}
+
+@media (hover: none) {
+  .hover-lift:active {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal.in-view,
+  .page-enter {
+    opacity: 1;
+    animation: none;
+  }
+  .hover-lift,
+  .nav-underline,
+  .faq-ic {
+    transition: none;
+  }
+}
