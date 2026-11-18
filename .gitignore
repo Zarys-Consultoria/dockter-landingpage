@@ -1,0 +1,30 @@
+# dependencies
+/node_modules
+
+# build output
+/.next/
+/dist/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# env
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+
+# os
+.DS_Store
+
+# generated
+AGENTS.md
+
+# claude context/memory
+CLAUDE.md
+MEMORY.md
+memory/
+.claude/
