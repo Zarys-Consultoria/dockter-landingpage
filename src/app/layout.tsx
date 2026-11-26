@@ -69,9 +69,32 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#3155d9" };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Dockter",
+  url: siteUrl,
+  applicationCategory: "HealthApplication",
+  operatingSystem: "Web",
+  description:
+    "Agenda, plantões, prontuário e receituário com assinatura digital, conectados para você acompanhar a sua prática médica com clareza.",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "BRL",
+    description: "Teste grátis por 30 dias",
+  },
+};
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR" className={`${jakarta.variable} ${dmSans.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>
         <noscript>
           <iframe
